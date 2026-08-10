@@ -4,7 +4,7 @@
 
 </div>
   
-  My personal desktop configuration for [**niri**](https://github.com/niri-wm/niri) on Arch Linux.
+My personal desktop configuration for [**niri**](https://github.com/niri-wm/niri) on Arch Linux.
 
 https://github.com/user-attachments/assets/d4b9c1d7-a8e3-4db2-bd6c-c152e93b7270
 
