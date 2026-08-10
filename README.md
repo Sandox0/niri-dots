@@ -1,4 +1,8 @@
+<div align="center">
+
 # niri-dots
+
+</div>
 
 My personal desktop configuration for [**niri**](https://github.com/YaLTeR/niri) on Arch Linux — a scrolling-tiling Wayland compositor.
 
