@@ -24,7 +24,7 @@ Hardware: Dell Inspiron 13, Intel i3-1005G1 / Iris Plus, 1366x768.
 
 | Component        | Tool                                    |
 |-------------------|------------------------------------------|
-| Compositor         | [niri](https://github.com/YaLTeR/niri) |
+| Compositor         | [niri](https://github.com/niri-wm/niri) |
 | Bar                | [Waybar](https://github.com/Alexays/Waybar) |
 | Terminal           | [Ghostty](https://ghostty.org/) |
 | App launcher       | [Rofi](https://github.com/davatorium/rofi) |
