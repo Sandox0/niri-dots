@@ -54,11 +54,19 @@ Hardware: Dell Inspiron 13, Intel i3-1005G1 / Iris Plus, 1366x768.
 
 </td>
 </tr>
-</table>
+<tr>
+<td width="50%">
 
 ![desktop](assets/screenshots/wallpaper-ocean.png)
 
+</td>
+<td width="50%">
+
 ![workflow](assets/screenshots/workflow-overview.png)
+
+</td>
+</tr>
+</table>
 
 ## Repository structure
 
