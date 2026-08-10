@@ -88,14 +88,16 @@ bashrc        -> my ~/.bashrc (real shell is bash, not fish)
 ```bash
 git clone https://github.com/Sandox0/niri-dots.git
 cd niri-dots
-
-cp -r config/* ~/.config/
-cp -r local/bin/* ~/.local/bin/
-cp bashrc ~/.bashrc
+./install.sh
 ```
 
+This installs `paru` (if missing), all required packages (niri, Waybar, Ghostty, fonts, GTK theme, etc.), and copies the configs into place. A few things are intentionally left manual — the script prints exactly what's left to do at the end (bootloader theme, SDDM theme, Spicetify).
+
 > [!WARNING]
-> Some configs reference absolute paths (`/home/felip/...`). Search and replace with your own username/home directory before using these as-is.
+> Some configs reference absolute paths (`/home/felip/...`). Search and replace with your own username/home directory before using these as-is:
+> ```bash
+> grep -rl '/home/felip' ~/.config
+> ```
 
 ## Acknowledgements
 
