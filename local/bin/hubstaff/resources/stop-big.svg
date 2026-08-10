@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="-4 -4 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>8DF10767-1F0D-4070-90A5-7603435409E3</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval-3" cx="60" cy="60" r="50" fill="#1B81E9"></circle>
+        <g id="tracking-time-with-work-breaks" transform="translate(-315.000000, -377.000000)" fill="#FFFFFF">
+            <g id="details" transform="translate(0.000000, 377.000000)">
+                <g id="stop" transform="translate(315.000000, 0.000000)">
+                    <path d="M60,0 C93.137085,0 120,26.862915 120,60 C120,93.137085 93.137085,120 60,120 C26.862915,120 0,93.137085 0,60 C0,26.862915 26.862915,0 60,0 Z M73,39 L47,39 C42.581722,39 39,42.581722 39,47 L39,47 L39,73 C39,77.418278 42.581722,81 47,81 L47,81 L73,81 C77.418278,81 81,77.418278 81,73 L81,73 L81,47 C81,42.581722 77.418278,39 73,39 L73,39 Z" id="Combined-Shape"></path>
+                </g>
+            </g>
+        </g>
+        <circle id="Oval-4" cx="60" cy="60" r="60" stroke="#D6DBE6" stroke-width="2"></circle>
+    </g>
+</svg>

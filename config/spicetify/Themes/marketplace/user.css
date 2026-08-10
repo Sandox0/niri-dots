@@ -1,0 +1,265 @@
+:root {
+    --spice-main: #0a0a0c;
+    --spice-sidebar: #070709;
+    --spice-player: #0d0d10;
+    --spice-card: #0f0f13;
+    --spice-shadow: #000000;
+    --spice-selected-row: rgba(107, 140, 173, 0.15);
+    --spice-button: #6b8cad;
+    --spice-button-active: #8aafd4;
+    --spice-button-disabled: rgba(107, 140, 173, 0.25);
+    --spice-tab-active: #6b8cad;
+    --spice-notification: #6b8cad;
+    --spice-notification-error: #c4785a;
+    --spice-misc: #a0a0b0;
+    --spice-text: #e0e0e0;
+    --spice-subtext: #6a6a7a;
+    --spice-accent: #6b8cad;
+    --spice-rgb-accent: 107, 140, 173;
+    --spice-highlight: rgba(107, 140, 173, 0.08);
+    --spice-highlight-elevated: rgba(107, 140, 173, 0.14);
+    --spice-main-elevated: #111116;
+}
+
+* {
+    font-family: "JetBrainsMono Nerd Font Mono", "Lexend", monospace !important;
+}
+
+/* FONDOS */
+body,
+.Root__top-container,
+.Root__main-view,
+.main-view-container,
+.main-view-container__scroll-node,
+.main-view-container__scroll-node-child {
+    background-color: #0a0a0c !important;
+}
+
+.Root__nav-bar {
+    background-color: #070709 !important;
+    border-right: 1px solid rgba(107, 140, 173, 0.10) !important;
+}
+
+.Root__now-playing-bar {
+    background-color: #0d0d10 !important;
+    border-top: 1px solid rgba(107, 140, 173, 0.12) !important;
+}
+
+/* TOP BAR — fondo siempre oscuro, sin importar el color de portada */
+.main-topBar-container {
+    background-color: #0a0a0c !important;
+    background-image: none !important;
+    --background-color: #0a0a0c !important;
+}
+
+/* HERO / HEADER DE PLAYLIST — eliminar el morado/color dinámico */
+.main-entityHeader-container {
+    background-color: #0a0a0c !important;
+    background-image: none !important;
+}
+
+/* Capa de color dinámica que Spotify inyecta via JS */
+.under-main-view,
+.main-entityHeader-backgroundColor,
+.x-entityHeader-overlay {
+    display: none !important;
+}
+
+/* Gradiente del hero hacia abajo */
+.main-entityHeader-container::after {
+    background: linear-gradient(transparent, #0a0a0c) !important;
+}
+
+/* TRACKLIST */
+.main-trackList-trackListRow,
+.main-trackList-trackListRowGrid {
+    border-radius: 2px !important;
+}
+
+.main-trackList-trackListRow:hover,
+.main-trackList-trackListRowGrid:hover {
+    background-color: rgba(107, 140, 173, 0.08) !important;
+    box-shadow: none !important;
+}
+
+.main-trackList-active {
+    background-color: rgba(107, 140, 173, 0.12) !important;
+}
+
+.main-trackList-playingIcon {
+    color: #6b8cad !important;
+}
+
+/* CARDS */
+.main-card-card {
+    background-color: #0f0f13 !important;
+    border: 1px solid rgba(107, 140, 173, 0.10) !important;
+    border-radius: 3px !important;
+}
+
+.main-card-card:hover {
+    background-color: rgba(107, 140, 173, 0.06) !important;
+    border-color: rgba(107, 140, 173, 0.28) !important;
+    box-shadow: none !important;
+}
+
+/* BOTÓN PLAY PRINCIPAL */
+button[data-encore-id="buttonPrimary"] {
+    background-color: #6b8cad !important;
+    border-radius: 999px !important;
+    box-shadow: 0 0 14px rgba(107, 140, 173, 0.40) !important;
+    color: #0a0a0c !important;
+}
+
+button[data-encore-id="buttonPrimary"]:hover {
+    background-color: #8aafd4 !important;
+    box-shadow: 0 0 20px rgba(107, 140, 173, 0.55) !important;
+}
+
+/* Botón play circular (en tracklist y cards) */
+.main-playButton-PlayButton {
+    background-color: #6b8cad !important;
+    box-shadow: 0 0 14px rgba(107, 140, 173, 0.40) !important;
+}
+
+.main-playButton-PlayButton:hover {
+    background-color: #8aafd4 !important;
+}
+
+/* BOTÓN SECUNDARIO */
+button[data-encore-id="buttonSecondary"] {
+    border-color: rgba(107, 140, 173, 0.35) !important;
+    color: #6b8cad !important;
+    border-radius: 999px !important;
+}
+
+/* CHIPS */
+button[data-encore-id="chip"] {
+    border-radius: 999px !important;
+    background-color: rgba(107, 140, 173, 0.08) !important;
+    border: 1px solid rgba(107, 140, 173, 0.18) !important;
+    color: #a0a0b0 !important;
+}
+
+button[data-encore-id="chip"]:hover,
+button[data-encore-id="chip"][aria-checked="true"] {
+    background-color: rgba(107, 140, 173, 0.18) !important;
+    border-color: #6b8cad !important;
+    color: #e0e0e0 !important;
+}
+
+/* PROGRESS BAR */
+.x-progressBar-progressBarBg {
+    background-color: rgba(107, 140, 173, 0.15) !important;
+}
+
+/* SIDEBAR ITEMS */
+.main-rootlist-rootlistItem:hover {
+    background-color: rgba(107, 140, 173, 0.08) !important;
+}
+
+/* CONTROLES ACTIVOS (shuffle, repeat) */
+.main-shuffleButton-button[aria-checked="true"],
+.main-repeatButton-button[aria-checked="true"] {
+    color: #6b8cad !important;
+}
+
+.main-shuffleButton-button[aria-checked="true"]::after,
+.main-repeatButton-button[aria-checked="true"]::after {
+    background-color: #6b8cad !important;
+}
+
+/* NOW PLAYING INFO */
+.main-trackInfo-name {
+    color: #e0e0e0 !important;
+}
+
+.main-trackInfo-artists a {
+    color: #6a6a7a !important;
+}
+
+.main-trackInfo-artists a:hover {
+    color: #6b8cad !important;
+}
+
+/* MENÚ CONTEXTUAL */
+[data-encore-id="menu"] {
+    background-color: #111116 !important;
+    border: 1px solid rgba(107, 140, 173, 0.15) !important;
+    border-radius: 4px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 4px !important; }
+::-webkit-scrollbar-track { background: transparent !important; }
+::-webkit-scrollbar-thumb {
+    background: rgba(107, 140, 173, 0.20) !important;
+    border-radius: 2px !important;
+}
+
+/* FIX: Hero gradiente suave en vez de negro duro */
+.under-main-view {
+    display: block !important;
+    background: linear-gradient(180deg, rgba(107, 140, 173, 0.08) 0%, #0a0a0c 70%) !important;
+}
+
+/* FIX: Botón play grande — forzar círculo */
+.main-playButton-PlayButton,
+.main-playButton-PlayButton > button,
+[class*="playButton"] button,
+.encore-bright-accent-set .main-playButton-PlayButton {
+    border-radius: 50% !important;
+    width: 56px !important;
+    height: 56px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* FIX: Hero gradiente suave en vez de negro duro */
+.under-main-view {
+    display: block !important;
+    background: linear-gradient(180deg, rgba(107, 140, 173, 0.08) 0%, #0a0a0c 70%) !important;
+}
+
+/* FIX: Botón play grande — forzar círculo */
+.main-playButton-PlayButton,
+.main-playButton-PlayButton > button,
+[class*="playButton"] button,
+.encore-bright-accent-set .main-playButton-PlayButton {
+    border-radius: 50% !important;
+    width: 56px !important;
+    height: 56px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* FIX: Dejar el color dinámico del hero (morado de Liked Songs) */
+.under-main-view {
+    display: block !important;
+    opacity: 1 !important;
+}
+
+.main-entityHeader-backgroundColor,
+.x-entityHeader-overlay {
+    display: block !important;
+    opacity: 1 !important;
+}
+
+/* FIX: Topbar transparente por defecto, aparece al hacer scroll */
+.main-topBar-container {
+    background-color: transparent !important;
+    background-image: none !important;
+    transition: background-color 0.3s ease !important;
+}
+
+/* Cuando hay scroll (Spotify añade esta clase automáticamente) */
+.main-topBar-container.main-topBar-topBarWithCoverArt,
+.main-topBar-isOnTop + * .main-topBar-container,
+[class*="topBar"][class*="sticky"] {
+    background-color: rgba(10, 10, 12, 0.92) !important;
+}

@@ -1,0 +1,23 @@
+
+layer-rule {
+    match namespace="rofi"
+    opacity 0.9
+    geometry-corner-radius 20
+    background-effect {
+        blur true
+        xray false
+        noise 0.03
+        saturation 1.5
+    }
+    shadow {
+        on
+        softness 80
+        spread 20
+        offset x=0 y=0
+        draw-behind-window true
+        color "#00000064"
+    }
+}
+
+
+

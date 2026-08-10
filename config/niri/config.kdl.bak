@@ -1,0 +1,423 @@
+input {
+    keyboard {
+        xkb {
+            layout "us"
+            variant "intl"
+        }
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+        accel-speed 1.0
+        accel-profile "flat"
+        click-method "clickfinger"
+        tap-button-map "left-right-middle"
+    }
+}
+
+layout {
+    gaps 5
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    default-column-width { proportion 0.5; }
+
+    focus-ring {
+        off
+    }
+
+    border {
+        width 1
+        active-color "#5d7c9566"
+        inactive-color "#5d7c9533"
+        urgent-color "#c4785a"
+    }
+
+    shadow {
+        on
+        softness 50
+        spread 5
+        offset x=0 y=4
+        color "#00000027"
+    }
+}
+
+spawn-at-startup "ghostty" "--gtk-single-instance=true" "--initial-window=false"
+spawn-at-startup "waybar"
+spawn-at-startup "udiskie"
+spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
+spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "-max-items=50" "store"
+spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "-max-items=50" "store"
+
+spawn-at-startup "awww-daemon" "--namespace" "wallpaper" "--layer" "background"
+spawn-at-startup "awww-daemon" "--namespace" "backdrop" "--layer" "background"
+spawn-sh-at-startup "sleep 1 && waypaper --restore --backend awww"
+
+spawn-at-startup "fcitx5" "-d"
+
+screenshot-path "~/pictures/screenshots/screenshot-%d.%m.%Y-%H:%M:%S.png"
+
+prefer-no-csd
+
+cursor {
+    xcursor-theme "Bibata-Modern-Ice"
+    xcursor-size 24
+}
+
+blur {
+    passes 3
+    offset 3.0
+    noise 0.02
+    saturation 1.3
+}
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+window-rule {
+    match app-id=r#"^(mpv)$"#
+    open-floating true
+    default-column-width { fixed 640; }
+}
+
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"^(org\.pulseaudio\.pavucontrol)$"#
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"^(waypaper)$"#
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"^(blueman-manager)$"#
+    open-floating true
+}
+
+window-rule {
+    match title=r#"^(Open|Open File|Select a File|Save As|Rename|Choose Files|File Upload|Authentication Required)(.*)$"#
+    open-floating true
+}
+
+layer-rule {
+    match namespace="^awww-daemonbackdrop$"
+    place-within-backdrop true
+}
+
+binds {
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    Mod+Q { spawn "ghostty" "+new-window"; }
+    Mod+E { spawn "ghostty" "-e" "yazi"; }
+    Mod+N { spawn "code"; }
+    Mod+W { spawn "firefox"; }
+    Mod+T { spawn "waypaper"; }
+    Mod+B { spawn "spotify"; }
+    Mod+O { spawn "swaync-client" "-t"; }
+    Mod+0 { spawn "better-control"; }
+    Mod+P { spawn "nwg-displays"; }
+    Mod+Space { spawn "sh" "-c" "$HOME/.config/rofi/launcher/launcher.sh"; }
+    Mod+V { spawn "sh" "-c" "$HOME/.config/rofi/clipboard/clipboard.sh"; }
+    Mod+Shift+E { spawn "thunar"; }
+    Ctrl+Shift+Escape { spawn "missioncenter"; }
+    Super+Alt+L { spawn "hyprlock"; }
+    Mod+Shift+X { spawn "sh" "-c" "$HOME/.config/hypr/scripts/toggle_saturation.sh"; }
+
+    Mod+C { close-window; }
+    Mod+F { fullscreen-window; }
+    Mod+M { maximize-column; }
+    Mod+S { toggle-window-floating; }
+    Mod+Tab { toggle-overview; }
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { reset-window-height; }
+    Mod+Equal { set-column-width "+5%"; }
+    Mod+Minus { set-column-width "-5%"; }
+    Alt+Tab { focus-workspace-previous; }
+
+    Mod+Shift+S { screenshot; }
+    Print { screenshot; }
+
+    Mod+Left  { focus-column-left; }
+    Mod+Right { focus-column-right; }
+    Mod+Up    { focus-window-up; }
+    Mod+Down  { focus-window-down; }
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+
+    Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp cooldown-ms=150 { focus-workspace-up; }
+
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && ~/.local/bin/volume.sh"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && ~/.local/bin/volume.sh"; }
+    XF86AudioMute allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && ~/.local/bin/volume.sh"; }
+    XF86AudioMicMute allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && ~/.local/bin/mic.sh"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn-sh "brightnessctl -e4 -n2 set 5%+ && ~/.local/bin/brightness.sh"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn-sh "brightnessctl -e4 -n2 set 5%- && ~/.local/bin/brightness.sh"; }
+
+    XF86AudioNext allow-when-locked=true { spawn-sh "playerctl next"; }
+    XF86AudioPause allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioPlay allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioPrev allow-when-locked=true { spawn-sh "playerctl previous"; }
+
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+    Mod+Shift+Q { quit; }
+}
+
+window-rule {
+    match app-id=r#"^xwaylandvideobridge$"#
+    opacity 0.0
+    open-floating true
+    default-column-width { fixed 1; }
+    default-window-height { fixed 1; }
+    block-out-from "screen-capture"
+}
+
+animations {
+    layer-close {
+        duration-ms 220
+        curve "ease-out-quad"
+    }
+    window-open {
+        duration-ms 200
+        curve "linear"
+        custom-shader r"
+            vec4 open_circle_tl(vec3 coords_geo, vec3 size_geo) {
+                vec3 coords_tex = niri_geo_to_tex * coords_geo;
+                vec4 color = texture2D(niri_tex, coords_tex.st);
+                float dist = length(coords_tex.st);
+                if (dist > niri_clamped_progress * 1.5)
+                    color = vec4(0.0);
+                return color;
+            }
+            vec4 open_color(vec3 coords_geo, vec3 size_geo) {
+                return open_circle_tl(coords_geo, size_geo);
+            }
+        "
+    }
+
+    window-close {
+        duration-ms 150
+        curve "linear"
+        custom-shader r"
+            vec4 close_circle_tl(vec3 coords_geo, vec3 size_geo) {
+                vec3 coords_tex = niri_geo_to_tex * coords_geo;
+                vec4 color = texture2D(niri_tex, coords_tex.st);
+                float p = 1.0 - niri_clamped_progress;
+                float dist = length(coords_tex.st);
+                if (dist > p * 1.5)
+                    color = vec4(0.0);
+                return color;
+            }
+            vec4 close_color(vec3 coords_geo, vec3 size_geo) {
+                return close_circle_tl(coords_geo, size_geo);
+            }
+        "
+    }
+}
+
+window-rule {
+    geometry-corner-radius 8
+    clip-to-geometry true
+}
+
+window-rule {
+    match app-id=r#"^com\.mitchellh\.ghostty$"#
+    draw-border-with-background false
+    background-effect {
+        xray true
+        blur false
+        noise 0.05
+        saturation 1
+    }
+}
+
+layer-rule {
+    match namespace="waybar"
+    shadow {
+        on
+        softness 100
+        spread 12
+        offset x=0 y=0
+        draw-behind-window true
+        color "#00000064"
+    }
+}
+
+layer-rule {
+    match namespace="rofi"
+    open-animation {
+        duration-ms 200
+        curve "cubic-bezier" 0.05 0.7 0.1 1
+    }
+    opacity 0.9
+    geometry-corner-radius 20
+    background-effect {
+        blur true
+        xray false
+        noise 0.03
+        saturation 1.3
+    }
+    shadow {
+        on
+        softness 80
+        spread 20
+        offset x=0 y=0
+        draw-behind-window true
+        color "#00000064"
+    }
+}
+
+
+
+
+
+
+window-rule {
+    match app-id=r#"^firefox$"#
+    open-maximized true
+}
+
+window-rule {
+    match app-id=r#"^vesktop$"#
+    open-maximized true
+}
+
+window-rule {
+    match app-id=r#"^steam$"#
+    open-maximized true
+}
+
+window-rule {
+    match app-id=r#"^[Tt]hunar$"#
+    open-maximized true
+}
+
+window-rule {
+    match app-id=r#"^[Ss]potify$"#
+    open-maximized true
+}
+
+layer-rule {
+    match namespace="swaync-control-center"
+    open-animation {
+        duration-ms 200
+        curve "cubic-bezier" 0.05 0.7 0.1 1
+    }
+    opacity 0.9
+    geometry-corner-radius 20
+}
+
+window-rule {
+    match app-id="thunar"
+    opacity 0.78
+    background-effect {
+        blur true
+        saturation 1.3
+        noise 0.02
+    }
+}
+
+window-rule {
+    match app-id="code"
+    opacity 0.85
+    background-effect {
+        blur true
+        saturation 1.3
+        noise 0.02
+    }
+}
+
+window-rule {
+    match app-id="vesktop"
+    opacity 0.85
+    background-effect {
+        blur true
+        saturation 1.3
+        noise 0.02
+    }
+}
+
+window-rule {
+    match app-id="vesktop"
+    open-floating true
+    default-column-width { proportion 0.9; }
+    default-window-height { proportion 0.9; }
+}
+
+window-rule {
+    match app-id="code"
+    open-floating false
+    default-column-width { proportion 1.0; }
+    default-window-height { proportion 1.0; }
+}
+
+window-rule {
+    match app-id="firefox"
+    open-floating true
+    default-column-width { proportion 0.9; }
+    default-window-height { proportion 0.9; }
+}
+
+window-rule {
+    match app-id="org.strawberrymusicplayer.strawberry"
+    open-floating false
+    default-column-width { proportion 1.0; }
+    default-window-height { proportion 1.0; }
+}
+
+window-rule {
+    match app-id="vesktop"
+    open-floating false
+    default-window-height { proportion 1.0; }
+}
+
+window-rule {
+    match app-id="firefox"
+    open-floating false
+    default-window-height { proportion 1.0; }
+}
+
+window-rule {
+    match app-id="Fightcade"
+    open-floating false
+    default-column-width { proportion 1.0; }
+    default-window-height { proportion 1.0; }
+}
+
+window-rule {
+    match app-id="better_control.py"
+    open-floating true
+    default-column-width { fixed 480; }
+    default-window-height { fixed 550; }
+    default-floating-position x=10 y=42 relative-to="top-right"
+}

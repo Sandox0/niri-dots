@@ -1,0 +1,56 @@
+#!/bin/sh
+#---------------------------------------------
+#   xdg-autostart-item
+#
+#   Helper script to (un)install auto-start items
+#
+#   https://specifications.freedesktop.org/autostart-spec/latest/
+#
+#---------------------------------------------
+
+exit_success()
+{
+    if [ $# -gt 0 ]; then
+        echo "$@"
+        echo
+    fi
+
+    exit 0
+}
+
+config_dir()
+{
+    local DIRS
+    if [ "x$(id -u)" = "x0" ]; then
+        DIRS=${XDG_CONFIG_DIRS:-/etc/xdg}
+    else
+        DIRS=${XDG_CONFIG_HOME:-$HOME/.config}
+    fi
+
+    echo ${DIRS%%:*}
+}
+
+install_file()
+{
+    mkdir -p $(config_dir)/autostart/
+    cp -f "$1" $(config_dir)/autostart/
+}
+
+uninstall_file()
+{
+    rm -f $(config_dir)/autostart/$(basename "$1")
+}
+
+case $1 in
+   install)
+      install_file $2
+      ;;
+   uninstall)
+      uninstall_file $2
+      ;;
+   *)
+   echo "Usage $(basename $0) <install|uninstall> <file>"
+   ;;
+esac
+
+exit_success

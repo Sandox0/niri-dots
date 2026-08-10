@@ -1,0 +1,68 @@
+#!/bin/sh
+#---------------------------------------------
+#   gnome-extension
+#
+#   Helper script to (un)install gnome-extensions
+#
+#---------------------------------------------
+
+exit_success()
+{
+    if [ $# -gt 0 ]; then
+        echo "$@"
+        echo
+    fi
+
+    exit 0
+}
+
+data_dir()
+{
+    local DIRS
+    if [ "x$(id -u)" = "x0" ]; then
+        DIRS=${XDG_DATA_DIRS:-/usr/local/share:/usr/share}
+    else
+        DIRS=${XDG_DATA_HOME:-$HOME/.local/share/}
+    fi
+
+    echo ${DIRS%%:*}
+}
+
+install_file()
+{
+    mkdir -p $(data_dir)/gnome-shell/extensions/
+    cp -fR "$1" $(data_dir)/gnome-shell/extensions/
+}
+
+uninstall_file()
+{
+    rm -fR $(data_dir)/gnome-shell/extensions/$(basename "$1")
+}
+
+foreach()
+{
+   local CMD=$1
+   shift
+   
+   while test $# -gt 0
+   do
+       $CMD $1 || exit $?
+       shift
+   done
+}
+
+case $1 in
+   install)
+      shift
+      foreach install_file $@
+      ;;
+   uninstall)
+      shift
+      foreach uninstall_file $@
+      ;;
+   *)
+   echo "Usage $(basename $0) <install|uninstall> <file>"
+   ;;
+esac
+
+exit_success

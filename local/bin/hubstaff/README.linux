@@ -1,0 +1,164 @@
+# Tux hearts Hubstaff
+
+The linux version of Hubstaff requires the following system libraries be installed to run.
+
+  libXinerama
+  libXrender
+  libcurl (7.19+ with OpenSSL support)
+  freetype
+  fontconfig
+
+These should be standard and already installed.
+
+The following are optional libraries that will be used if available:
+
+  libnotify  -- required to receive dektop notifications.
+
+
+# GNOME Shell extension
+
+On Wayland GNOME we use a Shell extension to get app tracking info. It is in the
+`gnome-shell-extension` directory. Here are some notes about it.
+
+## Updating shell-version
+
+Since GNOME 40, the `shell-version` metadata is "functional"
+and nod "pure documentation". If the GNOME Shell you are running
+is not listed in the `shell-version` metadata field, enabling it
+will fail.
+
+So, on each new GNOME Shell, we need to both test the extension
+and, if it works, update the `shell-version`. If it doesn't,
+that's a whole new ballgame and needs to be examined on its own.
+
+## Updating version
+
+The `version` field of the metadata is not needed for regular
+work. But, if we decide to install via official GNOME extensions
+repository, then we need to update it, that is, increment it,
+on each publishing to the repository.
+
+## Why it would make sense to publish to GNOME repo
+
+Because installing it then becomes trivial. It is a simple single
+D-Buss call. Without it, we need to copy files (maybe creating
+directories), then enable and then ask the user to restart (log out,
+log back in), which is not only more work, but requires cooperation
+from the user.
+
+## Can't we restart GNOME Shell automatically
+
+We can't. We can restart the whole OS, but that is scary, because we
+might mess up some of the user's work and is not usual on Linux (it
+ain't Windows).
+
+There is a way to force this via an `Eval` D-Bus method of the GNOME
+Shell, sending `Meta.restart('Restarting to load extension')`. But,
+for it to work, since GNOME 41, the Shell needs to be put into
+"unsafe" mode, and we can't do that automatically and it would be
+_very_ bad for us to ask the user to put their Shell into unsafe
+mode just to install some extension.
+
+## Tutorial on developing GNOME Shell extensions
+
+There's a good-enough tutorial on how to write Shell extensions
+from the GNOME guys themselves, at the time of this writing
+it could be found here: https://gjs.guide/extensions/development/creating.html
+
+Keep in mind that it's just an intro, most "real-world" stuff
+can't be found and the API docs are scant.
+
+
+## How to track windows and apps
+
+Currently, we don't track windows or apps in the extension. But, we started out
+that way and it took quite some time to figure it out, given the state of GNOME
+Shell docs. So, we're keeping a copy of that code here, as a reference, should
+we need it again:
+
+### Windows
+
+No, not _those_ Windows. These are windows and handled by the GNOME Shell.
+
+```
+let windows = [];
+
+function logwin(s, win) {
+    log("zec ", s, win.title, " appears_focused", win.appears_focused);
+}
+
+function onWindowAdded(ws, win) {
+    logwin("onWindowAdded", win);
+    windows.push(win);
+}
+
+function onWindowRemoved(ws, win) {
+    logwin("onWindowRemoved", win);
+    for (let i = 0; i < windows.length; ++i) {
+        if (windows[i] == win) {
+            windows.splice(i, 1);
+            break;
+        }
+    }
+}
+function hookem_windows() {
+    let mgr = global.workspace_manager;
+    let num = mgr.n_workspaces;
+    log("hookem num", num);
+    for (let i = 0; i < num; ++i) {
+        let ws = mgr.get_workspace_by_index(i);
+        ws.connect_after("window-added", onWindowAdded);
+        ws.connect_after("window-removed", onWindowRemoved);
+    }
+}
+```
+This does not handle workspace changes, which would include
+removing the callbacks.
+
+Also, should disconnect on disabling the extension.
+
+### Apps
+
+```
+function addApp(app) {
+  log("addApp", app.get_name(), "filename", app.get_app_info().filename, "executable", app.get_app_info().get_executable());
+}
+
+function removeApp(app) {
+  log("removeApp", app.get_name(), "filename", app.get_app_info().filename, "executable", app.get_app_info().get_executable());
+}
+
+function onAppStateChanged(appSys, app) {
+    if (app.state === Shell.AppState.RUNNING) {
+        addApp(app);
+    }
+    else if (app.state === Shell.AppState.STOPPED) {
+        removeApp(app);
+    }
+}
+function hookem_apps() {
+    let appSystem = Shell.AppSystem.get_default();
+    appSystem.connect("app-state-changed", onAppStateChanged);
+}
+
+```
+
+Should disconnect on disabling the extension.
+
+### A helper function to print windows and apps
+
+```
+function printem() {
+    log("zec printem");
+    let appSystem = Shell.AppSystem.get_default();
+    let apps = appSystem.get_running(); // maybe sort it?
+    log("apps.length=", apps.length);
+    for (let i = 0; i < apps.length; ++i) {
+        log(apps[i].name);
+        print(apps[i].name);
+    }
+    let actors = global.get_window_actors();
+    log("actors.length=", actors.length);
+
+}
+```

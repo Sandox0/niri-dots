@@ -1,0 +1,38 @@
+{
+    "version": "1",
+    "screens":
+    [
+        {
+            "title": "Welcome to Hubstaff",
+            "message": "The secure, lightweight desktop app that lets you track your time and activity.",
+            "image": "screen_1"
+        },
+        {
+            "title": "Track time to projects or to-dos",
+            "message": "Create, manage, and complete to-dos right in the app. Import tasks using an integration and add notes while you work.",
+            "image": "screen_2"
+        },
+        {
+            "title": "Monitor your activity",
+            "message": "While tracking time, the app can detect keyboard and mouse activity and take screenshots as proof of work (if settings are enabled).",
+            "image": "screen_3"
+        },
+        {
+            "title": "Adjust settings",
+            "message": "You can customize settings to remind you when to track time or tell you when screenshots are taken. Just look in your app preferences.",
+            "image": "screen_4"
+        },
+        {
+            "title": "You’re in control",
+            "message": "You decide when to start and stop the timer and can delete your time and data anytime. Proof of work features are only active when you’re tracking time.",
+            "image": "screen_5"
+        }
+    ],
+    "screen_scheme":
+    [
+        "title",
+        "message",
+        "image",
+        "url"        
+    ]
+}

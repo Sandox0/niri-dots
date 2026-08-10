@@ -1,0 +1,8 @@
+[Added Associations]
+application/vnd.rar=xarchiver.desktop;
+image/png=org.gnome.Loupe.desktop;
+
+[Default Applications]
+x-scheme-handler/discord=vesktop.desktop
+x-scheme-handler/discord-831593107883032657=discord-831593107883032657.desktop
+x-scheme-handler/discord-1216669957799018608=discord-1216669957799018608.desktop

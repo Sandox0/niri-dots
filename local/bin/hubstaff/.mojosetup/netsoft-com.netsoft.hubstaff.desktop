@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=Hubstaff
+GenericName=Hubstaff
+Comment=Hubstaff
+Icon=/home/felip/.local/bin/hubstaff/resources/Hubstaff.png
+Exec="/home/felip/.local/bin/hubstaff/HubstaffClient.bin.x86_64" %u
+Categories=Utility;
+MimeType=x-scheme-handler/hubstaff
+Path=/home/felip/.local/bin/hubstaff
+

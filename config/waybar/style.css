@@ -1,0 +1,128 @@
+@import "colors.css";
+
+* {
+    min-height: 0;
+    min-width: 0;
+    font-family: Lexend, "JetBrainsMono Nerd Font", "Symbols Nerd Font";
+    font-size: 12px;
+    font-weight: 700;
+}
+
+window#waybar {
+    background-color: rgba(10, 10, 12, 0.90);
+    color: #e0e0e0;
+    border-radius: 12px;
+}
+
+.modules-left, .modules-right, .modules-center {
+    background-color: transparent;
+    border-radius: 0;
+    border: none;
+    margin: 0;
+    padding: 0 6px;
+}
+
+/* ── MPRIS ── */
+#mpris {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    border-radius: 999px;
+}
+#mpris.playing {
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    padding: 0.1rem 0.9rem;
+    color: #c8d8e8;
+    font-style: normal;
+    font-weight: 700;
+    border-radius: 0;
+}
+#mpris.paused {
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    padding: 0.1rem 0.9rem;
+    color: #3a3a4a;
+    font-style: italic;
+    border-radius: 0;
+}
+
+/* ── WORKSPACES ── */
+#workspaces button {
+    padding: 0 0.3rem;
+    margin: 0;
+    border-radius: 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    color: #2a2a3a;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+#workspaces button label {
+    font-size: 16px;
+}
+#workspaces button:focus { outline: none; box-shadow: none; }
+#workspaces button:hover  { color: #e0e0e0; background-color: transparent; }
+#workspaces button.active { color: #6b8cad; background-color: transparent; font-weight: 800; }
+#workspaces button.urgent { color: #c4785a; background-color: transparent; }
+
+/* ── MÓDULOS BASE ── */
+#clock, #pulseaudio, #battery, #bluetooth, #network,
+#custom-logo, #custom-menu, #custom-power, #custom-notification,
+#cpu, #tray, #memory, #window, #language, #custom-expand-icon, #custom-powermenu {
+    padding: 0.05rem 0.65rem;
+    margin: 0.2rem 0.1rem;
+    border-radius: 999px;
+    background-color: transparent;
+    color: #e0e0e0;
+    font-weight: 700;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#clock:hover, #pulseaudio:hover, #battery:hover, #network:hover,
+#bluetooth:hover, #custom-notification:hover, #custom-powermenu:hover, #custom-menu:hover {
+    background-color: rgba(107, 140, 173, 0.1);
+    color: #6b8cad;
+}
+
+/* ── COLORES POR MÓDULO ── */
+#clock               { color: #6b8cad; font-weight: 800; }
+#pulseaudio          { color: #e0e0e0; }
+#pulseaudio.muted    { color: #2a2a3a; }
+#network             { color: #e0e0e0; }
+#battery             { color: #8aab8a; }
+#battery.warning     { color: #c4a05a; }
+#battery.critical    { color: #c4785a; }
+#battery.charging    { color: #8aab8a; }
+#language            { color: #a0a0b0; }
+#custom-menu         { color: #6b8cad; font-size: 15px; font-weight: 800; }
+#custom-powermenu    { color: #c4785a; }
+#custom-notification { color: #a0a0b0; }
+#custom-expand-icon  { color: #a0a0b0; }
+#window              { color: #2a3a4a; font-style: italic; font-weight: 600; }
+#tray                { color: #e0e0e0; }
+
+.tray-group-item { color: #e0e0e0; background-color: transparent; }
+#custom-sep { padding: 0; color: transparent; background: transparent; }
+window#waybar.empty #window { background-color: transparent; }
+
+tooltip {
+    background-color: rgba(10, 10, 12, 0.97);
+    border: none;
+    border-radius: 12px;
+    color: #e0e0e0;
+}
+
+
+@keyframes expandOut {
+    0%   { opacity: 0; margin: 0 320px; }
+    70%  { opacity: 1; margin: 0 -8px; }
+    100% { opacity: 1; margin: 0; }
+}
+window#waybar {
+    animation: expandOut 2s cubic-bezier(0.22, 1, 0.36, 1);
+}

@@ -1,0 +1,42 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+format = """
+[╭──](bold blue)$os $directory$git_branch$git_status$nodejs$fill$time
+[╰─](bold blue)$character """
+[os]
+disabled = false
+format = "[$symbol]($style)"
+style = "bold blue"
+[os.symbols]
+Arch = " 󰣇  "
+[directory]
+style = "bold white"
+format = "[$path]($style) "
+truncation_length = 3
+truncation_symbol = "…/"
+[git_branch]
+symbol = " "
+style = "bold #7dcfff"
+format = "[on $symbol$branch]($style) "
+[git_status]
+style = "bold #7dcfff"
+format = "([$all_status$ahead_behind]($style) )"
+[python]
+symbol = " "
+style = "bold #7aa2f7"
+disabled = true
+format = "[via $symbol($version )]($style)"
+[nodejs]
+symbol = " "
+style = "bold #7aa2f7"
+format = "[via $symbol($version )]($style)"
+[fill]
+symbol = " "
+[time]
+disabled = false
+format = "[$time]($style)  "
+time_format = "%I:%M:%S %p"
+style = "dimmed #9a9a9a"
+[character]
+success_symbol = "[❯](bold blue)"
+error_symbol = "[❯](bold red)"
