@@ -1,0 +1,4 @@
+*.bak
+*.broken-*
+__pycache__/
+*.pyc
