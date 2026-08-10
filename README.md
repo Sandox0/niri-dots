@@ -45,13 +45,11 @@ Hardware: Dell Inspiron 13, Intel i3-1005G1 / Iris Plus, 1366x768.
 <tr>
 <td width="50%">
 
-**Rofi launcher**
 ![rofi](assets/screenshots/rofi-launcher.png)
 
 </td>
 <td width="50%">
 
-**fastfetch + btop**
 ![fastfetch](assets/screenshots/fastfetch-btop.png)
 
 </td>
@@ -59,20 +57,17 @@ Hardware: Dell Inspiron 13, Intel i3-1005G1 / Iris Plus, 1366x768.
 <tr>
 <td width="50%">
 
-**Thunar — glass effect**
 ![thunar](assets/screenshots/thunar-glass.png)
 
 </td>
 <td width="50%">
 
-**Clean desktop**
 ![desktop](assets/screenshots/wallpaper-ocean.png)
 
 </td>
 </tr>
 </table>
 
-**Full workflow** — terminal, editor, browser, and music player side by side:
 ![workflow](assets/screenshots/workflow-overview.png)
 
 ## Repository structure
