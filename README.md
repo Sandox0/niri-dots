@@ -25,6 +25,7 @@ Hardware: Dell Inspiron 13, Intel i3-1005G1 / Iris Plus, 1366x768.
 | Notifications      | [SwayNC](https://github.com/ErikReider/SwayNotificationCenter) |
 | System info        | [fastfetch](https://github.com/fastfetch-cli/fastfetch) |
 | File manager       | Thunar |
+| Music player        | [Strawberry](https://www.strawberrymusicplayer.org/) |
 | Wallpaper daemon    | [awww](https://github.com/Toqozz/swww) (swww fork) via [waypaper](https://github.com/anufrievroman/waypaper) |
 | Shell               | bash + [Starship](https://starship.rs/) |
 | Fonts               | JetBrainsMono Nerd Font + Lexend |
