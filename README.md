@@ -32,7 +32,7 @@ Hardware: Dell Inspiron 13, Intel i3-1005G1 / Iris Plus, 1366x768.
 | System info        | [fastfetch](https://github.com/fastfetch-cli/fastfetch) |
 | File manager       | Thunar |
 | Music player        | [Strawberry](https://www.strawberrymusicplayer.org/) |
-| Wallpaper daemon    | [awww](https://github.com/Toqozz/swww) (swww fork) via [waypaper](https://github.com/anufrievroman/waypaper) |
+| Wallpaper daemon    | [awww](https://github.com/LGFae/swww) (swww fork) via [waypaper](https://github.com/anufrievroman/waypaper) |
 | Shell               | bash + [Starship](https://starship.rs/) |
 | Fonts               | JetBrainsMono Nerd Font + Lexend |
 | GTK theme           | adw-gtk3 (custom accent colors) |
