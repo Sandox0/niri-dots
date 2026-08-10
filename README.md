@@ -88,6 +88,7 @@ bashrc        -> my ~/.bashrc (real shell is bash, not fish)
 ```bash
 git clone https://github.com/Sandox0/niri-dots.git
 cd niri-dots
+chmod +x ./install.sh
 ./install.sh
 ```
 
