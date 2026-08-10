@@ -1,10 +1,10 @@
-<div align="center">
-
 # niri-dots
 
 My personal desktop configuration for [**niri**](https://github.com/YaLTeR/niri) on Arch Linux — a scrolling-tiling Wayland compositor.
 
-https://github.com/user-attachments/assets/7c9a12c2-d85f-43ec-9504-abf6b5aa7637
+https://github.com/user-attachments/assets/d4b9c1d7-a8e3-4db2-bd6c-c152e93b7270
+
+<div align="center">
 
 ![wallpaper](assets/screenshots/wallpaper-lain.png)
 
