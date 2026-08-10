@@ -4,6 +4,8 @@
 
 My personal desktop configuration for [**niri**](https://github.com/YaLTeR/niri) on Arch Linux — a scrolling-tiling Wayland compositor.
 
+https://github.com/user-attachments/assets/7c9a12c2-d85f-43ec-9504-abf6b5aa7637
+
 ![wallpaper](assets/screenshots/wallpaper-lain.png)
 
 </div>
