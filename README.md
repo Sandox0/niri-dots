@@ -54,19 +54,9 @@ Hardware: Dell Inspiron 13, Intel i3-1005G1 / Iris Plus, 1366x768.
 
 </td>
 </tr>
-<tr>
-<td width="50%">
-
-![thunar](assets/screenshots/thunar-glass.png)
-
-</td>
-<td width="50%">
+</table>
 
 ![desktop](assets/screenshots/wallpaper-ocean.png)
-
-</td>
-</tr>
-</table>
 
 ![workflow](assets/screenshots/workflow-overview.png)
 
