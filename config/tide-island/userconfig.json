@@ -1,0 +1,85 @@
+{
+    "bodyFontSize": 16,
+    "disableAutoExpandOnTrackChange": false,
+    "dynamicIslandLeftSwipeItems": [
+        "date",
+        "ram",
+        "cpu"
+    ],
+    "heroFontFamily": "Geist",
+    "iconFontFamily": "Geist",
+    "islandAutoHideEnabled": false,
+    "islandBackgroundOpacity": 90,
+    "islandExclusiveZone": 33,
+    "islandHeight": 30,
+    "islandWidth": 110,
+    "shortcutBindings": [
+        {
+            "key": "TAB",
+            "method": "toggle",
+            "mods": "SUPER",
+            "target": "overview"
+        },
+        {
+            "key": "right",
+            "method": "swipeRight",
+            "mods": "SUPER SHIFT",
+            "target": "tide"
+        },
+        {
+            "key": "left",
+            "method": "swipeLeft",
+            "mods": "SUPER SHIFT",
+            "target": "tide"
+        },
+        {
+            "key": "down",
+            "method": "showClock",
+            "mods": "SUPER SHIFT",
+            "target": "tide"
+        },
+        {
+            "key": "M",
+            "method": "togglePlayer",
+            "mods": "SUPER SHIFT",
+            "target": "tide"
+        },
+        {
+            "key": "C",
+            "method": "toggleControlCenter",
+            "mods": "SUPER SHIFT",
+            "target": "tide"
+        },
+        {
+            "key": "N",
+            "method": "toggleNotificationCenter",
+            "mods": "SUPER SHIFT",
+            "target": "tide"
+        },
+        {
+            "key": "W",
+            "method": "toggleWallpaperPicker",
+            "mods": "SUPER SHIFT",
+            "target": "tide"
+        },
+        {
+            "key": "A",
+            "method": "toggleApplicationLauncher",
+            "mods": "SUPER SHIFT",
+            "target": "tide"
+        },
+        {
+            "key": "F",
+            "method": "toggle",
+            "mods": "SUPER SHIFT",
+            "target": "island"
+        }
+    ],
+    "textFontFamily": "Geist",
+    "timeFontFamily": "Geist",
+    "titleFontSize": 20,
+    "tlpPermissionMode": "password",
+    "wallpaperCustomCommand": "awww img \"$1\" --namespace wallpaper --transition-type random --transition-duration 1.5 --transition-fps 60 --transition-step 90",
+    "wallpaperCustomCommandEnabled": true,
+    "wallpaperLibraryPath": "/home/felip/wallpapers/pictures"
+}

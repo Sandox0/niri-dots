@@ -2,12 +2,14 @@ input {
     keyboard {
         xkb {
             layout "us"
-            variant "intl"
+            variant "altgr-intl"
         }
     }
 
     touchpad {
         tap
+        drag true
+        drag-lock
         natural-scroll
         accel-speed 1.0
         accel-profile "flat"
@@ -32,9 +34,10 @@ layout {
     }
 
     border {
+
         width 1
-        active-color "#5d7c9566"
-        inactive-color "#5d7c9533"
+        active-color "#ffffff40"
+        inactive-color "#ffffff20"
         urgent-color "#c4785a"
     }
 
@@ -48,7 +51,6 @@ layout {
 }
 
 spawn-at-startup "ghostty" "--gtk-single-instance=true" "--initial-window=false"
-spawn-at-startup "waybar"
 spawn-at-startup "udiskie"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "-max-items=50" "store"
@@ -122,7 +124,7 @@ binds {
     Mod+Q { spawn "ghostty" "+new-window"; }
     Mod+E { spawn "ghostty" "-e" "yazi"; }
     Mod+N { spawn "code"; }
-    Mod+W { spawn "firefox"; }
+    Mod+W { spawn "zen-browser"; }
     Mod+T { spawn "waypaper"; }
     Mod+B { spawn "spotify"; }
     Mod+O { spawn "swaync-client" "-t"; }
@@ -425,3 +427,11 @@ window-rule {
     match app-id="better_control.py"
     open-floating true
 }
+
+window-rule {
+    match app-id=r#"^zen$"#
+    open-maximized true
+}
+
+// Tide Island shortcut bindings
+include "/home/felip/.config/tide-island/niri-shortcuts.kdl"
