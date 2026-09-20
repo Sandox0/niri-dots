@@ -47,7 +47,8 @@ paru -S --needed --noconfirm \
     wob \
     github-cli \
     python \
-    bc
+    bc \
+    tide-island
 
 # ---------------------------------------------------------------
 # 3. Wallpaper daemon + wallpaper picker
@@ -81,6 +82,9 @@ cp -r config/* ~/.config/
 cp -r local/bin/* ~/.local/bin/
 chmod +x ~/.local/bin/*.sh 2>/dev/null || true
 cp bashrc ~/.bashrc
+
+echo "==> Enabling Tide Island service..."
+systemctl --user enable --now tide-island.service
 
 echo
 echo "=================================================="
